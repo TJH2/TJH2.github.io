@@ -38,7 +38,7 @@ let enemy; // enemy object
          null, // fail
          "JS", // Event Left
          "VR", // Event Right
-         "js.jpg", // image
+         "JS.jpg", // image
          "DrivingFastandUsingaCarPhonetoCallthePresentDay.mp3" // song
       );
 
