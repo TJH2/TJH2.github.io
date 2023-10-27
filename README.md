@@ -1,4 +1,4 @@
-# Basic Portfolio Page (work in progress)
+# Basic Portfolio Page (A work in progress)
 This is my portfolio page for SD 180 at Whatcom Community College.
 # Projects
 A Night in New Bellingham -
