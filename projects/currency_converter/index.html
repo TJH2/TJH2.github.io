@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SD 230: Currency Converter</title>
+        <meta charset="utf-8">
+        <style>
+            * {
+                margin: 0px;
+                padding: 0px;
+                box-sizing: border-box;
+            }
+            body {
+                text-align: center;
+                font-family: monospace;
+            }
+            header {
+                border: 2px black solid;
+                margin: 10px;
+                padding: 5px;
+            }
+            main {
+                border: 2px black solid;
+                margin: 10px;
+                padding: 20px;
+            }
+            h2{
+                margin-bottom: 20px;
+            }
+            select {
+                padding: 2px;
+            }
+            button {
+                margin-top: 20px;
+                padding: 5px;
+                border: 2px black solid;
+                font-weight: bolder;
+            }
+            #conversion {
+                color: transparent;
+                margin: 20px;
+            }
+            #results {
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>SD 230: Currency Converter</h1>
+        </header>
+        <main>
+            <h2>Currency Conversion Tool:</h2>
+            <label for="amount"><strong>Amount To Convert:</strong></label>
+            <input type="text" id="amount">
+            <label for="from">Starting Currency:</label>
+            <select name="from" id="from">
+                <option value="AUD">AUD</option>
+                <option value="CAD">CAD</option>
+                <option value="CLP">CLP</option>
+                <option value="CNY">CNY</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+                <option value="INR">INR</option>
+                <option value="JPY">JPY</option>
+                <option value="RUB">RUB</option>
+                <option value="USD">USD</option>
+                <option value="ZAR">ZAR</option>
+            </select>
+            <label for="to">Convert To:</label>
+            <select name="to" id="to">
+                <option value="AUD">AUD</option>
+                <option value="CAD">CAD</option>
+                <option value="CLP">CLP</option>
+                <option value="CNY">CNY</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+                <option value="INR">INR</option>
+                <option value="JPY">JPY</option>
+                <option value="RUB">RUB</option>
+                <option value="USD">USD</option>
+                <option value="ZAR">ZAR</option>
+            </select>
+            <br>
+            <button onclick="convert(document.getElementById('amount').value, document.getElementById('from').value, document.getElementById('to').value)">Convert</button>
+            <p id="conversion">placeholder</p>
+            <h2>Currency Lookup Tool:</h2>
+            <p>If you aren't sure which currency code you're looking for, click the button below!</p>
+            <p><strong>Hint:</strong> To get a list of all available currencies, leave prompt blank.</p>
+            <button onclick="search(prompt('Please Provide A Currency Code or Partial Name To Search Available Currencies:'))">CURRENCY LOOKUP TOOL</button>
+            <div id="results"></div>
+        </main>
+        <script>
+
+            // currencies objecy
+            let currencies = {
+                "AUD": "Australian Dollar",
+                "CAD": "Canadian Dollar",
+                "CLP": "Chilean Peso",
+                "CNY" : "Chinese Yuan",
+                "EUR" : "Euro",
+                "GBP" : "British Pound Sterling",
+                "INR" :"Indian Rupee",
+                "JPY" : "Japanese Yen",
+                "RUB" : "Russian Ruble",
+                "USD" : "United States Dollar",
+                "ZAR": "South African Rand"
+                }
+
+                let conversions = {
+                    "AUD": 1.531863,
+                    "CAD": 1.36029,
+                    "CLP": 950.662057,
+                    "CNY" : 7.128404,
+                    "EUR" : 1.03203,
+                    "GBP" : 0.920938,
+                    "INR" : 81.255504,
+                    "JPY" : 143.376504,
+                    "RUB" : 57.875038,
+                    "USD" : 1,
+                    "ZAR": 17.92624
+                }
+            
+            // function to return full name of currency code
+            function fullName(code) {
+                let fullName = "";
+
+                Object.keys(currencies).forEach(key => {
+                    if(code === key) {
+                        fullName = currencies[key];
+                    }
+                })
+
+                return fullName;
+            }
+
+            // function to return conversion value
+            function conversion(code) {
+                let convertBy = 0;
+                Object.keys(conversions).forEach(key => {
+                    if(code === key) {
+                        convertBy = conversions[key];
+                    }
+                })
+
+                return convertBy;
+            }
+
+            // function to handle searching currency codes
+            function search(term){
+
+                document.getElementById("results").innerHTML = "";
+                
+                // veriable for if term appears
+                let termFound = false;
+
+                // for each loop to check for keys/partial values
+                Object.keys(currencies).forEach(key => {
+                    if(key === term.toUpperCase() || currencies[key].toLowerCase().includes(term.toLowerCase())) {
+                        document.getElementById("results").innerHTML += "<p>" + key + " - " + currencies[key] +"</p>";
+                        termFound = true;
+                    }
+                });
+
+                if(termFound == false) {
+                    document.getElementById("results").innerHTML += "<p>I'm sorry, \"" + term + "\" did not match any known currencies. Please try again.</p>";
+                }
+                return;
+            }
+
+            // function to convert between currencies
+            function convert(amount, starting_cc, ending_cc) {
+                
+                // Error handling for amount input
+                if(isNaN(amount) || amount == "") {
+                    alert("Please Provide a Numeric Value to Convert.");
+                    document.getElementById("amount").value = "";
+                }
+
+                // if user selects the same currency for from and to
+                if(starting_cc === ending_cc) {
+                    alert("You need to select two different currencies to use this converter.");
+                    return;
+                }
+
+                else {
+                    let newAmount = 0.00; // variable to convert to USD and then convert to new currency
+
+                    amount = amount * 1.00; // adds decimal place for whole #s
+                
+                    // convert to USD
+                    newAmount = amount / conversion(starting_cc);
+                    // convert from USD to new currency
+                    newAmount = newAmount * conversion(ending_cc);
+
+                    // to display full name
+                    starting_cc = starting_cc + " (" + fullName(starting_cc) + ")";
+                    ending_cc = ending_cc + " (" + fullName(ending_cc) + ")";
+
+                    // toFixed(2) rounds to 2 decimal places
+                    document.getElementById("conversion").innerHTML = amount.toFixed(2) + " " + starting_cc + " converts to " + newAmount.toFixed(2) + " " + ending_cc;
+                    document.getElementById("conversion").style.color = "black";
+                }
+                return;
+            }
+        </script>
+    </body>
+</html>
