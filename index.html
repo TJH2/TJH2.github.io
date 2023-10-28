@@ -19,16 +19,26 @@
 
             header {
                 margin: 10px 10px;
-            }
-
-            header h1 {
-                text-align: center;
                 padding: 10px;
                 background-color: black;
                 color: green;
                 border: 5px solid purple;
                 border-radius: 3px;
                 box-shadow: 5px 5px black;
+            }
+
+            header img {
+                border: 5px solid purple;
+                border-radius: 3px;
+            }
+
+            header ul {
+                list-style-type: none;
+            }
+
+            header li {
+                display: inline-block;
+                text-decoration: none;
             }
 
             main {
@@ -39,7 +49,7 @@
                 text-align: center;
                 margin: 10px;
                 padding: 10px;
-                height: 90vh;
+                height: 70vh;
                 overflow-y: scroll;
                 overflow-x: hidden;
             }
@@ -70,45 +80,34 @@
                 text-align: center;
             }
 
-            #image {
+            #container div {
                 margin: auto;
-                width: 900px;
-                height: 600px;
-                border: 5px solid purple;
-                border-radius: 3px;
-                display: block;
+                margin-top: 10px;
             }
 
-            figcaption {
-                margin: 2px auto;
-                padding: 2px;
-                width: 900px;
-                background-color: black;
-                color: green;
-                border: 5px solid purple;
+            #image {
+                margin: auto;
+                width: 300px;
+                height: 200px;
+                display: block;
                 border-radius: 3px;
-                text-align: center;
-                font-style:italic;
             }
 
             #blurb {
                 padding: 10px;
                 margin: auto;
-                width: 900px;
-                height:100px;
+                width: 500px;
+                height:115px;
                 background-image: none;
                 background-color: black;
                 color: green;
-                overflow-y: scroll;
-                border: 5px solid purple;
-                border-radius: 3px;
             }
 
             .animate1 {
-                animation: slideForward 30s infinite;
+                animation: slideForward 20s infinite;
             }
             .animate2 {
-                animation: slideBackward 30s infinite;
+                animation: slideBackward 20s infinite;
             }
 
             @keyframes slideForward {
@@ -135,16 +134,20 @@
     </head>
     <body>
             <header>
-                <h1>Developer Portfolio: Timothy Jake Holmes II</h1>
+                <img src="images/profilepicture.jpg" width="150px">
+                <h1>T. Jake Holmes II</h1>
+                <p><em>Second-year software development student at Whatcom Community College.</em></p>
+                <ul>
+                    <il><a href="https://www.linkedin.com/in/timothy-holmes-ii-22a32595/" target="_blank">LinkedIn</a></li>
+                    <li><a href="mailto:holmestj@plu.edu">Contact Me</a></li>
+                </ul>
+
             </header>
             <main>
-                <div id ="container">
-                    <figure>
-                    <img src = "" alt="Information About The Developer" id = "image">
-                    <figcaption id="caption"></figcaption>
-                    </figure>
-                    <div id = "blurb">
-                        <p></p>
+                <div id="container">
+                    <div>
+                        <img src ="" alt="Information About The Developer" id = "image">
+                        <p id ="blurb"></p>
                     </div>
                 </div>
                 <section>
@@ -176,10 +179,9 @@
             // User defined class node
             class Node {
                 // constructor
-                constructor(image, caption, blurb)
+                constructor(image, blurb)
                 {
                     this.image = image;
-                    this.caption = caption;
                     this.blurb = blurb;
                     this.next = null
                     this.previous = null
@@ -193,10 +195,10 @@
             this.size = 0;
             }
  
-            //add(image, caption, blurb)
-            add(image, caption, blurb) {
+            //add(image, blurb)
+            add(image, blurb) {
                 // creates a new node
-                let node = new Node(image, caption, blurb);
+                let node = new Node(image, blurb);
  
                 // to store current node
                 let current;
@@ -227,13 +229,12 @@
         let root = new LinkedList();
         let forward = true;
 
-        root.add("images/warlock.jpg", "A Little About Myself", "<p>My name is T. Jake Holmes and I'm an aspiring software developer living in Bellingham, WA. During the pandemic, I started learning how to code with sites like freeCodeCamp.org and enjoyed it so much that when the pandemic started to wind down, I decided to pursue a career change.</p>");
-        root.add("images/Pacific-Lutheran-University.jpg", "Previous Education", "<p>In 2016, I graduated from Pacific Lutheran University in Tacoma, WA with a bachelor's degree in Business Administration with a concentration in marketing.</p>");
-        root.add("images/wcc.jpg", "What Am I Doing Now?", "<p>Currently, I'm in my second year of Whatcom Community College's Software Development program.</p>");
+        root.add("images/warlock.jpg","My name is T. Jake Holmes and I'm an aspiring software developer living in Bellingham, WA. During the pandemic, I started learning how to code with sites like freeCodeCamp.org and enjoyed it so much that when the pandemic started to wind down, I decided to pursue a career change.");
+        root.add("images/Pacific-Lutheran-University.jpg", "In 2016, I graduated from Pacific Lutheran University in Tacoma, WA with a bachelor's degree in Business Administration with a concentration in marketing.");
+        root.add("images/wcc.jpg", "Currently, I'm in my second year of Whatcom Community College's Software Development program.");
 
 
         document.getElementById("image").src = root.head.image; // sets picture
-        document.getElementById("caption").innerText = root.head.caption; // sets caption
         document.getElementById("blurb").innerHTML = root.head.blurb; // sets blurb
 
 
@@ -267,11 +268,10 @@
                 }
             }
             document.getElementById("image").src = root.head.image; // sets picture
-            document.getElementById("caption").innerText = root.head.caption; // sets caption
             document.getElementById("blurb").innerHTML = root.head.blurb; // sets blurb
             document.getElementById("blurb").scrollTo(0,0);
 
-    }, 30000);
+    }, 20000);
         </script>
 
     </body>
