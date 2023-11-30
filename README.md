@@ -7,14 +7,22 @@ A text-based game I created last spring. It utilizes a hashtable to store and re
 
 Calculator Program - 
 A basic calculator program.
-![calculator](https://github.com/TJH2/TJH2.github.io/assets/82971033/bbd2bb96-6d03-41f4-82c7-39105e03aec9)
+![calculator](https://github.com/TJH2/TJH2.github.io/assets/82971033/b05484a4-be34-4eda-86a9-2050c40582d2)
+
 
 Currency Converter - 
 Allows the User to convert between 11 different currencies, or search up a currency code using parts of a currency's name.
-![cc](https://github.com/TJH2/TJH2.github.io/assets/82971033/7692f590-f670-4bfa-8191-f2d3895e60e5)
+![cc](https://github.com/TJH2/TJH2.github.io/assets/82971033/e8587f22-b145-45dd-96f3-32cb9576ec80)
+
 
 Rock, Paper, Scissors - 
 A fun little game that allows a user to play a classic game of rock, paper, scissors against a computer.
-![RPS](https://github.com/TJH2/TJH2.github.io/assets/82971033/03489785-7efe-4b71-91ee-4b451bd3d9e3)
+![RPS](https://github.com/TJH2/TJH2.github.io/assets/82971033/66fb3320-fc81-4698-b617-411b3e2425dc)
+
+
+Not-So-Magic 8 Ball -
+A simple program that works like a traditional Magic 8 Ball, but does not give useful reponses
+![8ball](https://github.com/TJH2/TJH2.github.io/assets/82971033/9675ced3-e83e-4095-bc5a-0e3033c0c6cb)
+
 
 # URL: https://tjh2.github.io/
