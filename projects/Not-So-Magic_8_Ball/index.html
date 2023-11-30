@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="eng-US">
+    <head>
+        <title>< Not-So-Magic 8 Ball /></title>
+        <meta charset="utf-8">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+        <style>
+            * {margin: 0px; padding: 0px; box-sizing: border-box;}
+            body {text-align: center; font-family: 'Roboto Mono', monospace; margin: auto; background-color: lightblue;}
+            h1 {margin: 10px; padding: 5px; background-color: LawnGreen; border: 2px black solid;}
+            main { margin: 10px; padding: 5px; background-color: orange; border: 2px black solid;}
+            #ball {margin: 10px auto; width: 500px; height: 500px; background-color: #000; border: 1px black solid; border-radius: 50%; color: white; overflow: hidden;}
+            #eight {position: relative; top: -150px;font-size: 250px;}
+            #ring {width: 250px; height: 250px; background-color: #002; border: 1px white solid; border-radius: 50%; position: relative; top: -40%; left: 25%;}
+            #answer {width: 150px; height: 150px; position: relative; top: 10%; left: 20%; background-color: blueviolet; color: white;text-align: center; padding: 10px; border-radius: 25%; overflow: auto;}
+            #question {margin: 10px auto; padding: 5px; resize: none; border: 2px black solid; display: block;}
+            #ask {margin: 5px auto; padding: 2px; display: block;}
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>< Not-So-Magic 8 Ball /></h1>
+        </header>
+        <main>
+            <div id="ball">
+                <p id="eight">8</p>
+                <div id="ring"><br>
+                    <div id="answer">
+                        <p id="answerText"></p>
+                    </div>
+                </div>
+            </div>
+            <textarea id="question" rows="2" cols="50" placeholder="Yes Or No Questions Go Here:"></textarea>
+            <button type="button" id="ask">Ask Question</button>
+        </main>
+
+        <script>
+            // array for magic 8 ball answers
+            const answers = ["I'm Not Even Going To Try And Answer That.", "You're Messing With Me, Right?", "You Can't Be Serious.", "Let's Just Move On To Another Question.", "I'm Willing To Forget You Asked That, If You Are.", "I'm Sorry, I Only Answer Serious Questions.", "*sigh* Try Again.", "Why Would You Ask That?", "Please, Spare Me.", "Let's Try A Better Question.", "I'm Not Sure What You're Getting At.", "I'm Not Even Going To Dignify That Question With A Response.", "You Don't Want My Honest Answer.", "Your Question Made My Brain Hurt.", "I Feel Dummer After Reeding You're Qeztion...", "Is My Time Is A Joke To You?", "Whoever Said There Are No Stupid Questions... Nevermind...", "Deep Down I Think You Know The Answer.", "I'VE HAD ENOUGH OF YOUR QUESTIONS."];
+
+            // array for textarea placeholder text
+            const placeholder = ["I Would Say Thanks For Your Previous Question, But I Wouldn't Mean It.", "Put A Little More Thought Into Your Questions.", "We've Got All The Time In The World.", "It Would Help If You Took These Questions More Seriously.", "I Think You've Figured Out My Question Expectations Now.", "Make This Next Question Count.", "I Hope You're Having As Much Fun As I am With These Questions."];
+
+            // code for magic 8 ball shake
+            const shaking = [{transform: 'scale(1)'}, {transform: 'rotate(0)'}, {transform: 'scale(1.25)'}, {transform: 'rotate(180deg)'}, {transform: 'scale(.75)'}, {transform: 'rotate(-180deg)'}, {transform: 'scale(1.25)'}, {transform: 'rotate(180deg)'}, {transform: 'scale(.75)'}, {transform: 'rotate(-180deg)'}, {transform: 'scale(1)'}, {transform: 'rotate(0deg)'}, ];
+            const shakeTiming = {duration: 2000, iterations: 1};
+            
+            const fadein = [{color: 'transparent'}, {color: 'transparent'}, {color: 'white'}];
+            const fadeTiming = {duration: 4000, iterations: 1};
+
+            const angry = [{backgroundColor: 'blueviolet'}, {backgroundColor: 'red'}];
+            
+            const ask = document.querySelector("#ask");
+            const ball = document.querySelector("#ball");
+            const text = document.querySelector("#answerText");
+
+            ask.addEventListener('click', () => {
+            if(document.getElementById("question").value == "" || !document.getElementById("question").value.endsWith("?"))
+            {alert("You Need To Type A Question Into The Box.\nPlease Include A \"?\" At The End.");}
+            else {
+                    ball.animate(shaking, shakeTiming);
+
+                    // random # generator for answers array
+                    let result = Math.floor(Math.random()*answers.length);
+                    // random # generator for placeholder
+                    let placeChange = Math.floor(Math.random()*placeholder.length);
+                    // code for clearing text-area
+                    document.getElementById("question").value = "";
+                    // code for changing placeholder text
+                    document.getElementById("question").placeholder = placeholder[placeChange] + " " + "Try Again:";
+                    // code for answering question
+
+                    text.innerHTML = answers[result];
+
+                    text.animate(fadein, fadeTiming);
+
+                        // if certain answer is returned, end the program by removing inputs
+                        if(text.innerHTML == "I'VE HAD ENOUGH OF YOUR QUESTIONS.")
+                        {
+                            document.getElementById("question").style.display="none";
+                            document.getElementById("ask").style.display="none";
+
+                            document.getElementById("answer").animate(angry, shakeTiming);
+                            document.getElementById("answer").style.backgroundColor="red";
+                        }
+                    // code remove previous answer from array so no duplicates will appear
+                    answers.splice(result, 1);
+                    console.log(answers.length);
+                 }});
+        </script>
+    </body>
+</html>

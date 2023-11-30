@@ -25,6 +25,9 @@
                 border: 5px solid purple;
                 border-radius: 3px;
                 box-shadow: 5px 5px black;
+                display: grid;
+                grid-template-columns: 175px auto 625px;
+                
             }
 
             header img {
@@ -49,7 +52,7 @@
                 text-align: center;
                 margin: 10px;
                 padding: 10px;
-                height: 70vh;
+                height: 77vh;
                 overflow-y: scroll;
                 overflow-x: hidden;
             }
@@ -80,54 +83,58 @@
                 text-align: center;
             }
 
-            #container div {
-                margin: auto;
-                margin-top: 10px;
+            #container {
+                border: 2px purple solid;
+                overflow: hidden;
             }
 
-            #image {
+            #slideBox {
                 margin: auto;
-                width: 300px;
-                height: 225px;
-                display: block;
-                border-radius: 3px;
+                padding: 5px;
+                width: 500px;
+                visibility: hidden;
+                overflow-x: hidden;
             }
 
             #blurb {
-                padding: 10px;
-                margin: auto;
-                width: 500px;
-                height:115px;
-                background-image: none;
-                background-color: black;
-                color: green;
+                font-size: 18px;
+                font-weight: bold;
+                text-align: center;
             }
 
-            .animate1 {
-                animation: slideForward 20s infinite;
+            .forward {
+                animation: slideForward 10s 1;
+                animation-timing-function: linear;
             }
-            .animate2 {
-                animation: slideBackward 20s infinite;
+
+            .backward {
+                animation: slideBackward 10s 1;
+                animation-timing-function: linear;
             }
 
             @keyframes slideForward {
                 0% { transform: translateX(-100%); }
                 25% { transform: translateX(0%); }
+                40% { transform: translateX(-10%); }
                 50% { transform: translateX(0%); }
+                60% { transform: translateX(10%); }
                 75% { transform: translateX(0%); }
                 100% { transform: translateX(100%); }
             }
 
             @keyframes slideBackward {
-                0% { transform: translateX(100%); }
-                25% { transform: translateX(0%); }
-                50% { transform: translateX(0%); }
-                75% { transform: translateX(0%); }
-                100% { transform: translateX(-100%); }
+                from { transform: translateX(100%); }
+                to { transform: translateX(-100%); }
+                
             }
 
             a:hover {
                 color: red;
+            }
+
+            #project {
+                width: 1000px;
+                height: 575px;
             }
 
         </style>
@@ -135,21 +142,21 @@
     <body>
             <header>
                 <img src="images/profilepicture.jpg" width="150px">
-                <h1>T. Jake Holmes II</h1>
-                <p><em>Second-year software development student at Whatcom Community College.</em></p>
-                <ul>
-                    <il><a href="https://www.linkedin.com/in/timothy-holmes-ii-22a32595/" target="_blank">LinkedIn</a></li>
-                    <li><a href="mailto:holmestj@plu.edu">Contact Me</a></li>
-                </ul>
-
-            </header>
-            <main>
+                <div>
+                    <h1>T. Jake Holmes II</h1>
+                    <p><em>Second-year software development student at Whatcom Community College.</em></p>
+                    <ul>
+                        <il><a href="https://www.linkedin.com/in/timothy-holmes-ii-22a32595/" target="_blank">LinkedIn</a></li>
+                        <li><a href="mailto:holmestj@plu.edu">Contact Me</a></li>
+                    </ul>
+                </div>
                 <div id="container">
-                    <div>
-                        <img src ="" alt="Information About The Developer" id = "image">
+                    <div id="slideBox">
                         <p id ="blurb"></p>
                     </div>
                 </div>
+            </header>
+            <main>
                 <section>
                     <h2>Coding Project 1: A Night In New Bellingham</h2>
                     <img src="images/ANINB.PNG">
@@ -157,32 +164,38 @@
                     <p>Here are links to the <a href="projects/ANightInNewBellingham/index.html" target="_blank">program</a> and <a href="https://github.com/TJH2/A_Night_In_New_Bellingham" target="_blank">Github Repo</a>.</p>
                 </section>
                 <section>
-                    <h2>Coding Project 2: SD 230 Calculator App</h2>
+                    <h2>Coding Project 2: Calculator Program</h2>
                     <img src="images/calculator.PNG">
                     <p><strong>Description:</strong> This is a calculator program that I built for SD 230. It can handle all forms of basic arithmetic.</p>
                     <p>Here are links to the <a href="projects/calculator/index.html" target="_blank">program</a> and <a href="https://github.com/TJH2/SD230-Projects" target="_blank">Github Repo</a>.</p>
                 </section>
                 <section>
-                    <h2>Coding Project 3: SD 230 Currency Converter</h2>
+                    <h2>Coding Project 3: Currency Converter</h2>
                     <img src="images/cc.PNG">
                     <p><strong>Description:</strong> This is a basic currency converter. It allows the user to convert between 12 different currencies as well as search for currency codes based on the name of a specific currency.</p>
                     <p>Here are links to the <a href="projects/currency_converter/index.html" target="_blank">program</a> and <a href="https://github.com/TJH2/SD230-Projects" target="_blank">Github Repo</a>.</p>
                 </section>
                 <section>
-                    <h2>Coding Project 4: SD 230 Rock, Paper, Scissors</h2>
+                    <h2>Coding Project 4: Rock, Paper, Scissors</h2>
                     <img src="images/RPS.PNG">
                     <p><strong>Description:</strong> The is a classic game of rock, paper, scissors. The player competes against a computer that randomly selects between the three options.</p>
                     <p>Here are links to the <a href="projects/rock_paper_scissors/index.html" target="_blank">program</a> and <a href="https://github.com/TJH2/SD230-Projects" target="_blank">Github Repo</a>.</p>
+                </section>
+                <section>
+                    <h2>Coding Project 5: Magic 8 Ball</h2>
+                    <img src="images/8ball.PNG">
+                    <p><strong>Description:</strong> A Basic Magic 8 Ball That Isn't Helpful In The Slightest.</p>
+                    <p>This is a basic program that uses HTML5, CSS3 and JS Note: the 8 ball works off of an array of possible answers and a random # generator. Answers are removed once used to avoid duplicates. If a certain answer is given, the textarea and button is removed and the program is nolonger interactable by the user.</p>
+                    <p>Here are links to the <a href="projects/Not-So-Magic_8_Ball/" target="_blank">program</a> and <a href="https://github.com/TJH2/Not-So-Magic_8_Ball" target="_blank">Github Repo</a>.</p>
                 </section>
         </main>
         <script>
             // User defined class node
             class Node {
                 // constructor
-                constructor(image, blurb)
+                constructor(test)
                 {
-                    this.image = image;
-                    this.blurb = blurb;
+                    this.test = test;
                     this.next = null
                     this.previous = null
                 }
@@ -195,10 +208,10 @@
             this.size = 0;
             }
  
-            //add(image, blurb)
-            add(image, blurb) {
+            
+            add(test) {
                 // creates a new node
-                let node = new Node(image, blurb);
+                let node = new Node(test);
  
                 // to store current node
                 let current;
@@ -222,56 +235,66 @@
             }
 
             //Moving through LL
-            setHead(node) {this.head = node ;}
+            setHead(node) {this.head = node ; }
 
         }
 
         let root = new LinkedList();
         let forward = true;
 
-        root.add("images/warlock.jpg","My name is T. Jake Holmes and I'm an aspiring software developer living in Bellingham, WA. During the pandemic, I started learning how to code with sites like freeCodeCamp.org and enjoyed it so much that when the pandemic started to wind down, I decided to pursue a career change.");
-        root.add("images/Pacific-Lutheran-University.jpg", "In 2016, I graduated from Pacific Lutheran University in Tacoma, WA with a bachelor's degree in Business Administration with a concentration in marketing.");
-        root.add("images/wcc.jpg", "Currently, I'm in my second year of Whatcom Community College's Software Development program.");
+        root.add("My name is T. Jake Holmes and I'm an aspiring software developer living in Bellingham, WA. During the pandemic, I started learning how to code with sites like freeCodeCamp.org and enjoyed it so much that when the pandemic started to wind down, I decided to pursue a career change.");
+        root.add("In 2016, I graduated from Pacific Lutheran University in Tacoma, WA with a bachelor's degree in Business Administration with a concentration in marketing.");
+        root.add("Currently, I'm in my second year of Whatcom Community College's Software Development program.");
 
+        document.getElementById("blurb").innerText = root.head.test; // sets test
+        direction(document.getElementById("slideBox"), forward);
+        
 
-        document.getElementById("image").src = root.head.image; // sets picture
-        document.getElementById("blurb").innerHTML = root.head.blurb; // sets blurb
-
-
-
-        document.getElementById("blurb").scrollTo(0,0);
-        document.getElementById("container").classList.add("animate1");
 
             
-    setInterval(function(){ // chamges from node to node displaying information in 15 second intervals
+        setInterval(function(){ // chamges from node to node displaying information in 4.1 second intervals
 
             if(forward == true) {
+            
                 if(root.head.next != null) {
-                root.head = root.head.next;
+                    root.head = root.head.next; 
                 }
                 else { 
                     forward = false;
-                    document.getElementById("container").classList.remove("animate1");
-                    document.getElementById("container").classList.add("animate2"); 
+                    root.head = root.head.previous;
                 }
             }
             else {
 
                 if(root.head.previous != null) {
-                    root.head = root.head.previous;
+                    root.head = root.head.previous; 
                 }
-
-                else {
+                else { 
                     forward = true;
-                    document.getElementById("container").classList.remove("animate2");
-                    document.getElementById("container").classList.add("animate1"); 
+                    root.head = root.head.next; 
                 }
             }
-            document.getElementById("image").src = root.head.image; // sets picture
-            document.getElementById("blurb").innerHTML = root.head.blurb; // sets blurb
-            document.getElementById("blurb").scrollTo(0,0);
+            document.getElementById("blurb").innerText = root.head.test; // sets test
+            direction(document.getElementById("slideBox"), forward);
+        }, 10100);
 
-    }, 20000);
+        function direction(element, forward) {
+            let direction = "";
+        
+            if(forward == true) {
+                direction = "forward";
+            } else {
+            direction = "backward";
+            }
+
+            element.style.visibility = "visible";
+            element.classList.add(direction);
+            element.addEventListener( "animationend",  function() {
+                element.style.visibility = "hidden"; 
+                element.classList.remove(direction);   
+            });
+
+        }
         </script>
 
     </body>

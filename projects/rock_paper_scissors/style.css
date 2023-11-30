@@ -1,0 +1,92 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: monospace;
+    text-align: center;
+}
+
+header {
+    padding: 5px;
+    text-align: center;
+    width: 97.5%;
+    border: 2px black solid;
+    border-radius: 5px;
+    margin: 5px auto 0px auto;
+}
+
+main {
+    width: 97.5%;
+    height: auto;
+    margin: 0px auto;
+}
+
+input {
+    display: none;
+}
+
+label{
+    display: none;
+    padding: 5px;
+    border: 2px black solid;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+label:hover {
+    box-shadow: 5px 5px black;
+}
+
+input:checked + label {
+    background-color: black;
+    color: white;
+}
+
+img {
+    margin: 0px auto;
+    width: 600px;
+    height: 425px;
+    border: 2px black solid;
+    border-radius: 5px;
+}
+
+p, legend {
+    margin: 5px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#options {
+    height: 45px;
+}
+
+#contain_results {
+    height: 50px;
+    border-radius: 5px;
+}
+
+#display {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+#play {
+    padding: 5px;
+    margin: 5px auto 0px auto;
+    font-weight: bold;
+    font-size: 18px;
+    border: 2px black solid;
+    border-radius: 5px;
+}
+
+#play:active {
+    padding: 5px 10px;
+}
+
+#play:hover {
+    box-shadow: 2px 2px black;
+}
