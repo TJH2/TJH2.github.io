@@ -103,29 +103,28 @@
             }
 
             .forward {
-                animation: slideForward 10s 1;
+                animation: slideForward 15s 1;
                 animation-timing-function: linear;
             }
 
             .backward {
-                animation: slideBackward 10s 1;
+                animation: slideBackward 15s 1;
                 animation-timing-function: linear;
             }
 
             @keyframes slideForward {
-                0% { transform: translateX(-100%); }
+                0% { transform: translateX(-112%); }
                 25% { transform: translateX(0%); }
-                40% { transform: translateX(-10%); }
+                40% { transform: translateX(-12%); }
                 50% { transform: translateX(0%); }
-                60% { transform: translateX(10%); }
+                60% { transform: translateX(12%); }
                 75% { transform: translateX(0%); }
-                100% { transform: translateX(100%); }
+                100% { transform: translateX(112%); }
             }
 
             @keyframes slideBackward {
-                from { transform: translateX(100%); }
-                to { transform: translateX(-100%); }
-                
+                from { transform: translateX(112%); }
+                to { transform: translateX(-112%); }  
             }
 
             a:hover {
@@ -276,7 +275,7 @@
             }
             document.getElementById("blurb").innerText = root.head.test; // sets test
             direction(document.getElementById("slideBox"), forward);
-        }, 10100);
+        }, 15100);
 
         function direction(element, forward) {
             let direction = "";
