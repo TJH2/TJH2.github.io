@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kreon:wght@300..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+        <style>
+            body {
+                font-family: "kreon";
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 70px;
+            }
+
+            p { 
+                font-size: 50px;
+            }
+
+            button {
+            font-weight: bold;
+            border: 2px black solid;
+            font-size: 50px;
+            display: block;
+            margin: 10px auto;
+            background-color: white;
+            color: black;
+            }
+
+            #hidden, #theme {
+                visibility: hidden; 
+            }
+        </style>
+    </head>
+    <body onclick="test()">
+        <h1>Final Jeopardy!</h1>
+        <main>
+            <p><strong>The Topic Is:</strong> Who Do You Work With?</p>
+            <p id="hidden">How many pages are on the Lynden Library staff?</p>
+        </main>
+        <script>
+            function test() {
+                document.getElementById("hidden").style.visibility = "visible";
+                
+                let myAudio = new Audio('https://archive.org/download/tvtunes_29826/Jeopardy - 1997 - Think Music.mp3');
+                let playCount = 0;
+                let maxPlays = 2;
+
+                myAudio.addEventListener('ended', function() {
+                    playCount++;
+                    if (playCount < maxPlays) {
+                        this.currentTime = 0; // Reset to start
+                        this.play();          // Play again
+                    }
+                });
+
+                myAudio.play(); // Start first play
+
+            }
+        </script>
+    </body>
+</html>

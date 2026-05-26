@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kreon:wght@300..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+        <style>
+            body {
+                font-family: "kreon";
+                text-align: center;
+            }
+            main {
+                display: flex;
+            }
+            section {
+                flex: 1;
+            }
+            button {
+            font-weight: bold;
+            border: 2px black solid;
+            font-size: 50px;
+            display: block;
+            margin: 10px auto;
+            background-color: white;
+            color: black;
+            width: 150px;
+            }
+            #question, #dailyDouble {
+                background-color: white;
+                border: black solid 2px;
+                position: fixed;
+                top: 10%;
+                left: 10%;
+                width: 80%;
+                height: 80%;
+                display: none;
+            }
+            #question p {
+                font-size: 50px;
+            }
+
+            #dailyDouble p {
+                font-size: 100px;
+                margin: 20%;
+            }
+            footer {
+                position:fixed;
+             bottom:5px;
+                left: 50%;
+            }
+        </style>
+    </head>
+    <body>
+        <header><h1>Round 2: Double Jeopardy</h1></header>
+        <main>
+            <section>
+                <h2>Category 1</h2>
+                <button id="c11" onclick="test('c11')">200</button>
+                <button id="c12" onclick="test('c12')">400</button>
+                <button id="c13" onclick="test('c13')">600</button>
+                <button id="c14" onclick="test('c14')">800</button>
+                <button id="c15" onclick="test('c15')">1000</button>
+            </section>
+            <section>
+                <h2>Category 2</h2>
+                <button id="c21" onclick="test('c21')">200</button>
+                <button id="c22" onclick="test('c22')">400</button>
+                <button id="c23" onclick="test('c23')">600</button>
+                <button id="c24" onclick="test('c24')">800</button>
+                <button id="c25" onclick="test('c25')">1000</button>
+            </section>
+            <section>
+                <h2>Category 3</h2>
+                <button id="c31" onclick="test('c31')">200</button>
+                <button id="c32" onclick="test('c32')">400</button>
+                <button id="c33" onclick="test('c33')">600</button>
+                <button id="c34" onclick="test('c34')">800</button>
+                <button id="c35" onclick="test('c35')">1000</button>
+            </section>
+        </main>
+        <div id="question" onclick="test2('question')">
+        </div>
+        <div id="dailyDouble" onclick="test2('dailyDouble')">
+            <p>DAILY DOUBLE</p>
+        </div>
+        <footer><a href="./final.html">Final Jeopardy</a></footer>
+        <script>
+            function test(id) {
+                let btn = document.getElementById(id); // Uses the button id to select the button
+                btn.disabled = true; // disables button so it can't be clicked again
+                btn.style.backgroundColor = "gray"; // grays out button
+
+                document.getElementById("question").innerHTML = "<p>"+ obj[id][0] + "</p>";
+
+                if(id == "c34") {
+                    document.getElementById("dailyDouble").style.display = "block";
+                } else {
+                    document.getElementById("question").style.display = "block";
+                }
+            }
+
+            function test2(id) {
+                console.log("close");
+                let question = document.getElementById(id);
+                question.style.display = "none";
+                if(id != "question") {
+                    document.getElementById("question").style.display = "block";
+                }
+            }
+
+            const obj = {
+                c11: ["This is the question for Catagory 1 100!", null],
+                c12: ["This is the question for Catagory 1 200!", null],
+                c13: ["This is the question for Catagory 1 300!", null],
+                c14: ["This is the question for Catagory 1 400!", null],
+                c15: ["This is the question for Catagory 1 500!", null],
+                c21: ["This is the question for Catagory 2 100!", null],
+                c22: ["This is the question for Catagory 2 200!", null],
+                c23: ["This is the question for Catagory 2 300!", null],
+                c24: ["This is the question for Catagory 2 400!", null],
+                c25: ["This is the question for Catagory 2 500!", null],
+                c31: ["This is the question for Catagory 3 100!", null],
+                c32: ["This is the question for Catagory 3 200!", null],
+                c33: ["This is the question for Catagory 3 300!", null],
+                c34: ["This is the question for Catagory 3 400!", null],
+                c35: ["This is the question for Catagory 3 500!", null]
+
+            }
+        </script>
+    </body>
+</html>
