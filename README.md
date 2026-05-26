@@ -32,3 +32,4 @@ A simple program that works like a traditional Magic 8 Ball, but does not give u
 
 
 # URL: https://tjh2.github.io/
+# URL for PAGE JEOPARDY: https://tjh2.github.io/projects/page_jeopardy/index.html
