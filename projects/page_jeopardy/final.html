@@ -64,6 +64,17 @@
                     play = true;
                 }
             }
+
+            // Add a keydown event listener to the whole document
+            document.addEventListener('keydown', function(event) {
+            // Check if the pressed key is the spacebar
+            // event.code is preferred for clarity ("Space")
+                if (event.code === 'Space') {
+                    event.preventDefault(); // Prevent page scrolling
+                    console.log('Spacebar pressed!');
+                    alert('You pressed the spacebar!');
+                }
+            });
         </script>
     </body>
 </html>
