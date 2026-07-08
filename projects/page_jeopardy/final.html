@@ -42,23 +42,27 @@
             <p id="hidden">WITHIN FIVE, THIS IS THE NUMBER OF COLLECTION CODES THAT LYNDEN USES (NOT TO BE CONFUSED WITH THE NUMBER ON THE MASTER LIST)</p>
         </main>
         <script>
+            let play = false;
+            
             function test() {
-                document.getElementById("hidden").style.visibility = "visible";
+                if(play == false) {
+                    document.getElementById("hidden").style.visibility = "visible";
                 
-                let myAudio = new Audio('https://archive.org/download/tvtunes_29826/Jeopardy - 1997 - Think Music.mp3');
-                let playCount = 0;
-                let maxPlays = 2;
+                    let myAudio = new Audio('https://archive.org/download/tvtunes_29826/Jeopardy - 1997 - Think Music.mp3');
+                    let playCount = 0;
+                    let maxPlays = 2;
 
-                myAudio.addEventListener('ended', function() {
-                    playCount++;
-                    if (playCount < maxPlays) {
-                        this.currentTime = 0; // Reset to start
-                        this.play();          // Play again
-                    }
-                });
+                    myAudio.addEventListener('ended', function() {
+                        playCount++;
+                        if (playCount < maxPlays) {
+                            this.currentTime = 0; // Reset to start
+                            this.play();          // Play again
+                        }
+                    });
 
-                myAudio.play(); // Start first play
-
+                    myAudio.play(); // Start first play
+                    play = true;
+                }
             }
         </script>
     </body>
