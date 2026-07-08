@@ -35,7 +35,7 @@
             }
         </style>
     </head>
-    <body onclick="test()">
+    <body>
         <h1>Final Jeopardy!</h1>
         <main>
             <p><strong>THE TOPIC IS:</strong> COLLECTION CODES</p>
@@ -71,8 +71,7 @@
             // event.code is preferred for clarity ("Space")
                 if (event.code === 'Space') {
                     event.preventDefault(); // Prevent page scrolling
-                    console.log('Spacebar pressed!');
-                    alert('You pressed the spacebar!');
+                    test();
                 }
             });
         </script>
